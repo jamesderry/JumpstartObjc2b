@@ -9,7 +9,9 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+{
+    NSArray *alphabet;
+}
 @end
 
 @implementation ViewController
@@ -18,7 +20,37 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    alphabet = @[@"Alpha", @"Beta", @"Gamma", @"Delta", @"Epsilon", @"Zeta", @"Eta", @"Theta", @"Iota", @"Kappa", @"Lambda", @"Mu", @"Nu", @"Xi"];
+    
 }
+
+#pragma mark - UITableView Delegate and Datasource Methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [alphabet count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *identifier = @"ourCell";
+    UITableViewCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:@"ourCell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    
+    cell.textLabel.text = [alphabet objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
