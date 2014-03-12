@@ -41,10 +41,7 @@
 {
     NSString *identifier = @"ourCell";
     UITableViewCell *cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:@"ourCell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
+    cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
     cell.textLabel.text = [alphabet objectAtIndex:indexPath.row];
     
